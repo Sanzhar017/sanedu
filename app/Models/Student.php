@@ -13,7 +13,7 @@ class Student extends Model
 
   public function orderType()
   {
-    return $this->belongsTo(OrderType::class, 's_status_id');
+    return $this->belongsTo(OrderType::class, 'status_id');
   }
 
   public function studentOrders()
