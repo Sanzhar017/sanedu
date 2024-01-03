@@ -10,12 +10,12 @@ class StudentController extends Controller
 
     public function index()
     {
-
+      return view('students.index');
     }
 
     public function create()
     {
-
+        return view('students.create');
     }
 
 
@@ -33,7 +33,7 @@ class StudentController extends Controller
 
     public function edit(Student $student)
     {
-        //
+        return view('students.edit');
     }
 
 
