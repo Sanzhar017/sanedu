@@ -10,7 +10,11 @@ class StudentController extends Controller
 
     public function index()
     {
-      $students = Student::get();
+      $students = Student::paginate(10)->withQueryString();
+
+
+
+
 
       return view('content.pages.pages-home', ['students' => $students]);
 
@@ -46,8 +50,11 @@ class StudentController extends Controller
     }
 
 
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+      $student = Student::findOrFail($id);
+      $student->delete();
+
+      return redirect()->route('students.index')->with('success', 'Student deleted successfully');
     }
 }
