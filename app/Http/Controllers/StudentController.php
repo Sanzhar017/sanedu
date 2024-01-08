@@ -10,7 +10,10 @@ class StudentController extends Controller
 
     public function index()
     {
-      return view('students.index');
+      $students = Student::get();
+
+      return view('content.pages.pages-home', ['students' => $students]);
+
     }
 
     public function create()

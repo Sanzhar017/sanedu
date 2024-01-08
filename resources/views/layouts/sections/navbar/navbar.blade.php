@@ -1,4 +1,4 @@
-@php
+  @php
 $containerNav = ($configData['contentLayout'] === 'compact') ? 'container-xxl' : 'container-fluid';
 $navbarDetached = ($navbarDetached ?? '');
 @endphp

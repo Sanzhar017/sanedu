@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('order_number');
             $table->dateTime('order_date');
             $table->string('title');
-            $table->string('old_status_id');
-            $table->foreignId('s_status_id')->constrained('order_types');
+            $table->string('old_status_id')->constrained('statuses');
+            $table->foreignId('s_status_id')->constrained('statuses');
 
             $table->timestamps();
         });

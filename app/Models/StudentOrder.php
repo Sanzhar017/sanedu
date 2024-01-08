@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class StudentOrder extends Model
 {
@@ -16,21 +19,29 @@ class StudentOrder extends Model
     'order_date',
     'title',
     'old_status_id',
-    's_status_id',
+    'status_id',
   ];
 
 
-  public function student()
+  public function student(): BelongsTo
   {
-    return $this->belongsTo(Student::class, 'student_id');
+    return $this->belongsTo(Student::class);
   }
 
-  public function orderType()
+  public function orderType(): BelongsTo
   {
-    return $this->belongsTo(OrderType::class, 'order_type_id');
+    return $this->belongsTo(OrderType::class);
   }
 
-  public function status()
+  public function oldStatus(): BelongsTo
   {
-    return $this->belongsTo(Status::class, 's_status_id');
+    return $this->belongsTo(Status::class, 'old_status_id');
   }
+
+  public function currentStatus(): BelongsTo
+  {
+    return $this->belongsTo(Status::class, 'status_id');
+  }
+
+
+}

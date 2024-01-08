@@ -20,7 +20,7 @@ use App\Http\Controllers\authentications\RegisterBasic;
 */
 
 // Main Page Route
-Route::get('/', [HomePage::class, 'index'])->name('pages-home');
+Route::get('/', [\App\Http\Controllers\StudentController::class, 'index'])->name('pages-home');
 Route::get('/page-2', [Page2::class, 'index'])->name('pages-page-2');
 
 // locale
@@ -37,3 +37,14 @@ Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-
 Route::resource('students',\App\Http\Controllers\StudentController::class);
 
 Route::resource('/orders', \App\Http\Controllers\OrderTypeController::class);
+
+
+
+
+
+
+
+//
+//Route::fallback(function () {
+//  return view('content.pages.pages-misc-error');
+//});

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('s_status_id')->constrained('order_types');
+            $table->foreignId('status_id')->constrained('statuses');
             $table->timestamps();
         });
     }
