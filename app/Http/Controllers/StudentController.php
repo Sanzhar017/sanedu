@@ -28,7 +28,19 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+      $request->validate([
+        'name' => 'required|string|max:255',
+        'student_id' => 'required|string|max:255',
+        // Другие правила валидации, если необходимо
+      ]);
 
+      Student::create([
+        'name' => $request->input('name'),
+        'student_id' => $request->input('student_id'),
+        // Другие поля, которые нужно сохранить
+      ]);
+
+      return redirect()->route('students.index')->with('success', 'Student created successfully');
     }
 
 
@@ -40,13 +52,25 @@ class StudentController extends Controller
 
     public function edit(Student $student)
     {
-        return view('students.edit');
+      return view('students.edit', compact('student'));
     }
 
 
     public function update(Request $request, Student $student)
     {
-        //
+      $request->validate([
+        'name' => 'required|string|max:255',
+        'student_id' => 'required|string|max:255',
+        // Другие правила валидации, если необходимо
+      ]);
+
+      $student->update([
+        'name' => $request->input('name'),
+        'student_id' => $request->input('student_id'),
+        // Другие поля, которые нужно обновить
+      ]);
+
+      return redirect()->route('students.index')->with('success', 'Student updated successfully');
     }
 
 

@@ -43,4 +43,7 @@
       </table>
     </div>
   </div>
+
+  {{ $students->total() }}
+
 @endsection
