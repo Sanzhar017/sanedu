@@ -19,6 +19,8 @@
       <input type="text" class="form-control" id="student_id" name="student_id" value="{{ $student->student_id }}" required>
     </div>
 
+
+
     <!-- Добавьте другие поля, если необходимо -->
 
     <button type="submit" class="btn btn-primary">Update Student</button>

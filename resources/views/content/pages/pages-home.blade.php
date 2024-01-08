@@ -3,14 +3,14 @@
 @section('title', 'Home')
 
 @section('content')
-  <h4>Home Page Students</h4>
+  <h4>Home Page Students ❤️</h4>
   {{ $students->links() }}
 
 
   <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
 
   <div class="card">
-    <h5 class="card-header">Table Basic</h5>
+    <h5 class="card-header">Table Students </h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>
