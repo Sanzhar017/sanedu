@@ -44,6 +44,6 @@
     </div>
   </div>
 
-  {{ $students->total() }}
+  <p class="mt-3">Найдено {{ $students->total() }} записей</p>
 
 @endsection

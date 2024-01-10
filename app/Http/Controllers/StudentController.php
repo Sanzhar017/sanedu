@@ -31,13 +31,11 @@ class StudentController extends Controller
       $request->validate([
         'name' => 'required|string|max:255',
         'student_id' => 'required|string|max:255',
-        // Другие правила валидации, если необходимо
       ]);
 
       Student::create([
         'name' => $request->input('name'),
         'student_id' => $request->input('student_id'),
-        // Другие поля, которые нужно сохранить
       ]);
 
       return redirect()->route('students.index')->with('success', 'Student created successfully');
@@ -61,13 +59,11 @@ class StudentController extends Controller
       $request->validate([
         'name' => 'required|string|max:255',
         'student_id' => 'required|string|max:255',
-        // Другие правила валидации, если необходимо
       ]);
 
       $student->update([
         'name' => $request->input('name'),
         'student_id' => $request->input('student_id'),
-        // Другие поля, которые нужно обновить
       ]);
 
       return redirect()->route('students.index')->with('success', 'Student updated successfully');
