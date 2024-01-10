@@ -1,29 +1,25 @@
-<!-- Offcanvas to add new user -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser" aria-labelledby="offcanvasAddUserLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Add User</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body mx-0 flex-grow-0">
-    <form class="add-new-user pt-0" id="addNewUserForm">
-      ...
-      ...
-    </form>
-  </div>
-</div>
+@extends('layouts.layoutMaster')
 
+@section('title', 'Create Student')
 
-<script>// edit record
-  $(document).on('click', '.edit-record', function () {
-    var user_id = $(this).data('id');
+@section('content')
+  <h4>Create Student</h4>
 
-    // changing the title of offcanvas
-    $('#offcanvasAddUserLabel').html('Edit User');
+  <form method="POST" action="{{ route('students.store') }}">
+    @csrf
 
-    // get data
-    $.get(`${baseUrl}user-list\/${user_id}\/edit`, function (data) {
-      $('#user_id').val(data.id);
-      $('#add-user-fullname').val(data.name);
-      $('#add-user-email').val(data.email);
-    });
-  });</script>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="status_id" class="form-label">Status ID:</label>
+      <input type="text" class="form-control" id="status_id" name="status_id" required>
+    </div>
+
+    <!-- Добавьте другие поля, если необходимо -->
+
+    <button type="submit" class="btn btn-primary">Create Student</button>
+  </form>
+@endsection

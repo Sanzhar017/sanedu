@@ -21,6 +21,7 @@ class StudentOrder extends Model
     'old_status_id',
     'status_id',
   ];
+  protected $table = 'students_orders';
 
 
   public function student(): BelongsTo

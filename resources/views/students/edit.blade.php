@@ -15,8 +15,8 @@
     </div>
 
     <div class="mb-3">
-      <label for="student_id" class="form-label">Student ID:</label>
-      <input type="text" class="form-control" id="student_id" name="student_id" value="{{ $student->student_id }}" required>
+      <label for="student_id" class="form-label">Status ID:</label>
+      <input type="text" class="form-control" id="status_id" name="status_id" value="{{ $student->status_id }}" required>
     </div>
 
 

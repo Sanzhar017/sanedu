@@ -1,12 +1,9 @@
-<table class="datatables-users table">
-  <thead class="table-light">
-  <tr>
-    <th></th>
-    <th>Id</th>
-    <th>User</th>
-    <th>Email</th>
-    <th>Verified</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-</table>
+@extends('layouts.layoutMaster')
+
+@section('title', 'Student Details')
+
+@section('content')
+  <h4>Student Details</h4>
+  <p><strong>Name:</strong> {{ $student->name }}</p>
+  <p><strong>Status ID:</strong> {{ $student->status_id }}</p>
+@endsection

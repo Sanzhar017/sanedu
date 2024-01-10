@@ -16,7 +16,7 @@
         <thead>
         <tr>
           <th>Name</th>
-          <th>Status ID</th>
+          <th>Status </th>
           <th>Actions</th>
         </tr>
         </thead>
@@ -24,19 +24,21 @@
         @foreach($students as $student)
           <tr>
             <td>{{ $student->name }}</td>
-            <td>{{ $student->status_id }}</td>
+            <td>{{ $student->status->name }}</td>
             <td>
-              <a class="dropdown-item" href="{{ route('students.edit', ['student' => $student->id]) }}">
-                <i class="ti ti-pencil me-2"></i> Edit
-              </a>
-              <form action="{{ route('students.destroy', ['student' => $student->id]) }}" method="post" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to delete this student?')">
-                  <i class="ti ti-trash me-2"></i> Delete
-                </button>
-              </form>
+              <div class="dropdown">
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{ route('students.edit', ['student' => $student->id]) }}"><i class="ti ti-pencil me-2"></i>Edit</a>
+                  <form method="POST" action="{{ route('students.destroy', ['student' => $student->id]) }}" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="dropdown-item"><i class="ti ti-trash me-2"></i>Delete</button>
+                  </form>
+                </div>
+              </div>
             </td>
+
           </tr>
         @endforeach
         </tbody>
@@ -47,3 +49,6 @@
   <p class="mt-3">Найдено {{ $students->total() }} записей</p>
 
 @endsection
+
+
+

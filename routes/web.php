@@ -25,7 +25,7 @@ Route::get('/', [\App\Http\Controllers\StudentController::class, 'index'])->name
 
 
 
-Route::get('/page-2', [Page2::class, 'index'])->name('pages-page-2');
+Route::get('/page-2', [\App\Http\Controllers\StudentOrderController::class, 'index'])->name('pages-page-2');
 
 // locale
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
@@ -39,6 +39,9 @@ Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-
 
   //students
 Route::resource('students',\App\Http\Controllers\StudentController::class);
+
+  //order create
+Route::resource('order', \App\Http\Controllers\StudentOrderController::class);
 
 
 
