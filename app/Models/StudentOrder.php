@@ -19,7 +19,7 @@ class StudentOrder extends Model
     'order_date',
     'title',
     'old_status_id',
-    'status_id',
+    's_status_id',
   ];
   protected $table = 'students_orders';
 

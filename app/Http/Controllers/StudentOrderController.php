@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentOrderRequest;
 use App\Models\StudentOrder;
 use App\Models\Student;
 use App\Models\OrderType;
@@ -12,37 +13,32 @@ class StudentOrderController extends Controller
 {
   public function index()
   {
-    $orders = StudentOrder::with(['student', 'orderType', 'oldStatus', 'currentStatus'])->get();
-    return view('orders.index', compact('orders'));
+    $orders = StudentOrder::with(['student', 'ordertype_id', 'oldstatus_id', 's_status_id'])->get();
+    return view('orders.index', ['orders' => $orders]);
   }
 
   public function create(Student $student)
   {
-    $orderTypes = OrderType::all();
-    $statuses = Status::all();
-    return view('orders.create', compact('student', 'orderTypes', 'statuses'));
+    $orderTypes = OrderType::get();
+    $statuses = Status::get();
+    $students = Student::get();
+
+    return view('orders.create',['students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
   }
 
 
-  public function store(Request $request, Student $student)
+  public function store(StudentOrderRequest $request, Student $student)
   {
-    $request->validate([
-      'order_type_id' => 'required',
-      'order_number' => 'required',
-      'order_date' => 'required',
-      'title' => 'required',
-      'old_status_id' => 'required',
-      's_status_id' => 'required',
-    ]);
+    $validatedData = $request->validated();
 
-    $studentOrder = $student->student_orders()->create($request->all());
+    $studentOrder = $student->studentOrders()->create($validatedData);
 
     return redirect()->route('students.show', ['student' => $student])->with('success', 'Order attached successfully');
   }
 
   public function show(StudentOrder $order)
   {
-    return view('student_orders.show', compact('order'));
+    return view('orders.show', ['order'=> $order]);
   }
 
   public function edit(StudentOrder $order)
@@ -55,7 +51,7 @@ class StudentOrderController extends Controller
   public function update(Request $request, StudentOrder $order)
   {
     $request->validate([
-      // Ваши правила валидации
+      'hui ego potom, napishu'
     ]);
 
     $order->update($request->all());

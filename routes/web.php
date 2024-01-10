@@ -45,6 +45,8 @@ Route::resource('order', \App\Http\Controllers\StudentOrderController::class);
 
 
 
+
+
   //orders
-Route::resource('/orders', \App\Http\Controllers\OrderTypeController::class);
+Route::resource('/orders', \App\Http\Controllers\StudentOrderController::class);
 
