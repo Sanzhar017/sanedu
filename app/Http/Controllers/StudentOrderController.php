@@ -23,9 +23,8 @@ class StudentOrderController extends Controller
     $statuses = Status::get();
     $students = Student::get();
 
-    return view('orders.create',['students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
+    return view('orders.create',['student'=>$students, 'orderTypes'=>$orderTypes, 'statuses'=>$statuses, 'students'=>$students ]);
   }
-
 
   public function store(StudentOrderRequest $request, Student $student)
   {
@@ -45,13 +44,13 @@ class StudentOrderController extends Controller
   {
     $orderTypes = OrderType::all();
     $statuses = Status::all();
-    return view('orders.edit', compact('order', 'orderTypes', 'statuses'));
+    return view('orders.edit', ['order'=>$order, 'orderTypes'=>$orderTypes, 'statuses'=>$statuses]);
   }
 
   public function update(Request $request, StudentOrder $order)
   {
     $request->validate([
-      'hui ego potom, napishu'
+
     ]);
 
     $order->update($request->all());
@@ -63,6 +62,6 @@ class StudentOrderController extends Controller
   {
     $order->delete();
 
-    return redirect()->route('student.show', ['student' => $order->student])->with('success', 'Order deleted successfully');
+    return redirect()->route('orders.index', ['student' => $order->student])->with('success', 'Order deleted successfully');
   }
 }

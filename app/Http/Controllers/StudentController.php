@@ -55,9 +55,9 @@ class StudentController extends Controller
     return redirect()->route('students.index')->with('success', 'Student updated successfully');
   }
 
-    public function destroy($id)
+    public function destroy($student)
     {
-      $student = Student::findOrFail($id);
+      $student = Student::findOrFail($student);
 
       $student->delete();
 

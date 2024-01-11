@@ -6,6 +6,11 @@
   <h4>Home Page Students ❤️</h4>
   {{ $students->links() }}
 
+  @if(session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+  @endif
 
   <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
 

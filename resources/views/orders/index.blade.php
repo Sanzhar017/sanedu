@@ -34,8 +34,8 @@
         <td>{{ $order->currentStatus->name }}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Order Actions">
-            <a href="{{ route('student.orders.show', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-info">View</a>
-            <a href="{{ route('student.orders.edit', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-warning">Edit</a>
+            <a href="{{ route('orders.show', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-info">View</a>
+            <a href="{{ route('orders.edit', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-warning">Edit</a>
             <form method="POST" action="{{ route('orders.destroy', ['student' => $order->student, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Are you sure you want to delete this order?')">
               @csrf
               @method('DELETE')
