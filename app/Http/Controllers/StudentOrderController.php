@@ -19,16 +19,24 @@ class StudentOrderController extends Controller
 
   public function create(Student $student)
   {
-    $orderTypes = OrderType::get();
-    $statuses = Status::get();
-    $students = Student::get();
+    $orderTypes = OrderType::all();
+    $statuses = Status::all();
+    $students = Student::all();
 
-    return view('orders.create',['student'=>$students, 'orderTypes'=>$orderTypes, 'statuses'=>$statuses, 'students'=>$students ]);
+    return view('orders.create', compact('student', 'students', 'orderTypes', 'statuses'));
   }
 
-  public function store(StudentOrderRequest $request, Student $student)
+
+  public function store(Request $request, Student $student)
   {
-    $validatedData = $request->validated();
+    $validatedData = $request->validate([
+      'order_type_id' => 'required',
+      'order_number' => 'required',
+      'order_date' => 'required',
+      'title' => 'required',
+      'old_status_id' => 'required',
+      's_status_id' => 'required',
+    ]);
 
     $studentOrder = $student->studentOrders()->create($validatedData);
 
@@ -42,8 +50,8 @@ class StudentOrderController extends Controller
 
   public function edit(StudentOrder $order)
   {
-    $orderTypes = OrderType::all();
-    $statuses = Status::all();
+    $orderTypes = OrderType::get();
+    $statuses = Status::get();
     return view('orders.edit', ['order'=>$order, 'orderTypes'=>$orderTypes, 'statuses'=>$statuses]);
   }
 

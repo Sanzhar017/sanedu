@@ -27,8 +27,8 @@ class StudentOrderRequest extends FormRequest
           'order_number' => 'required',
           'order_date' => 'required',
           'title' => 'required',
-          'old_status_id' => 'required',
-          's_status_id' => 'required',
+          'old_status_id' => 'nullable|numeric',
+          's_status_id' => 'nullable|numeric',
         ];
     }
 }

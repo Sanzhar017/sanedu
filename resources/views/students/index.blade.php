@@ -1,4 +1,3 @@
-
 <table class="table mt-3">
   <thead>
 
@@ -13,7 +12,6 @@
     <tr>
       <td>{{ $student->id }}</td>
       <td>{{ $student->name }}</td>
-
       <td>
         <a href="{{ route('students.show', $student->id) }}" class="btn btn-info">Show</a>
         <a href="{{ route('students.edit', $student->id) }}" class="btn btn-warning">Edit</a>

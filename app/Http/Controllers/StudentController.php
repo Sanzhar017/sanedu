@@ -10,10 +10,16 @@ use App\Http\Requests\UpdateStudentRequest;
 
 class StudentController extends Controller
 {
+  protected $student;
+
+    public function __construct(Student $student)
+      {
+        $this->student = $student;
+      }
 
     public function index()
     {
-      $students = Student::paginate(10)->withQueryString();
+      $students = $this->student->paginateWithQueryString(10);
 
       return view('content.pages.pages-home', ['students' => $students]);
     }
@@ -27,8 +33,7 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
       $validatedData = $request->validated();
-
-      Student::create($validatedData);
+      $this->student->createStudent($validatedData);
 
       return redirect()->route('students.index')->with('success', 'Student created successfully');
     }
@@ -57,10 +62,13 @@ class StudentController extends Controller
 
     public function destroy($student)
     {
-      $student = Student::findOrFail($student);
-
-      $student->delete();
+      $this->student->destroyStudent($student);
 
       return redirect()->route('students.index')->with('success', 'Student deleted successfully');
     }
+
+  public function createStudent(array $data)
+  {
+    return $this->create($data);
+  }
 }

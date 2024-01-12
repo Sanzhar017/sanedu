@@ -43,7 +43,6 @@
                 </div>
               </div>
             </td>
-
           </tr>
         @endforeach
         </tbody>
@@ -54,6 +53,3 @@
   <p class="mt-3">Найдено {{ $students->total() }} записей</p>
 
 @endsection
-
-
-

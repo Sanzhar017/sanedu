@@ -22,4 +22,17 @@ class Student extends Model
     return $this->hasMany(StudentOrder::class, 'student_id');
   }
 
+  public function paginateWithQueryString($perPage)
+  {
+    return $this->paginate($perPage)->withQueryString();
+  }
+  public function createStudent(array $data)
+  {
+    return $this->create($data);
+  }
+  public function destroyStudent($student)
+  {
+    $student = $this->findOrFail($student);
+    $student->delete();
+  }
 }

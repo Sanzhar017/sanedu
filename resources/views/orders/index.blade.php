@@ -3,6 +3,17 @@
 @section('title', 'Student Orders')
 
 @section('content')
+
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
   <h4>Student Orders</h4>
 
   <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Create Order</a>
