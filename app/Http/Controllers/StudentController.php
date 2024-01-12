@@ -10,7 +10,7 @@ use App\Http\Requests\UpdateStudentRequest;
 
 class StudentController extends Controller
 {
-  protected $student;
+    protected $student;
 
     public function __construct(Student $student)
       {
