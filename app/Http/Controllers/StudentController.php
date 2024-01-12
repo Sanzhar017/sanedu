@@ -45,11 +45,11 @@ class StudentController extends Controller
     }
 
 
-    public function edit(Student $student)
+    public function edit( $student)
     {
+      $student = $this->student->findOrFail($student);
       return view('students.edit', ['student' => $student]);
     }
-
 
   public function update(UpdateStudentRequest $request, Student $student)
   {
