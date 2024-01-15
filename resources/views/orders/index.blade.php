@@ -50,7 +50,7 @@
             <form method="POST" action="{{ route('orders.destroy', ['student' => $order->student, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Are you sure you want to delete this order?')">
               @csrf
               @method('DELETE')
-              <button type="submit" class="btn btn-danger">Delete</button>
+              <button type="submit" class="btn btn-danger">ы</button>
             </form>
           </div>
         </td>
