@@ -18,7 +18,6 @@
       <input type="text" class="form-control" id="status_id" name="status_id" required>
     </div>
 
-    <!-- Добавьте другие поля, если необходимо -->
 
     <button type="submit" class="btn btn-primary">Create Student</button>
   </form>

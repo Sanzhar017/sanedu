@@ -13,7 +13,6 @@
   @endif
 
   <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
-
   <div class="card">
     <h5 class="card-header">Table Students </h5>
     <div class="table-responsive text-nowrap">

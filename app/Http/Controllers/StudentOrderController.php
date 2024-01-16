@@ -27,7 +27,7 @@ class StudentOrderController extends Controller
   }
 
 
-  public function store(Request $request, Student $student)
+  public function   store(Request $request, Student $student)
   {
     $validatedData = $request->validate([
       'order_type_id' => 'required',
@@ -55,7 +55,7 @@ class StudentOrderController extends Controller
     return view('orders.edit', ['order'=>$order, 'orderTypes'=>$orderTypes, 'statuses'=>$statuses]);
   }
 
-  public function update(Request $request, StudentOrder $order)
+ public function update(Request $request, StudentOrder $order)
   {
     $request->validate([
 

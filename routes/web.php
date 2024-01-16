@@ -28,8 +28,6 @@ Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-
   //students
 Route::resource('students',\App\Http\Controllers\StudentController::class);
 
-  //order create
-Route::resource('order', \App\Http\Controllers\StudentOrderController::class);
 
   //orders
 Route::resource('/orders', \App\Http\Controllers\StudentOrderController::class);

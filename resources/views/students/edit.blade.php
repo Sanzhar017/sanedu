@@ -21,7 +21,6 @@
 
 
 
-    <!-- Добавьте другие поля, если необходимо -->
 
     <button type="submit" class="btn btn-primary">Update Student</button>
   </form>

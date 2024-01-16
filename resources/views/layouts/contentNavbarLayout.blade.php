@@ -40,11 +40,8 @@ $container = (isset($configData['contentLayout']) && $configData['contentLayout'
     @endif
 
 
-    <!-- Layout page -->
     <div class="layout-page">
 
-      {{-- Below commented code read by artisan command while installing jetstream. !! Do not remove if you want to use jetstream. --}}
-      {{-- <x-banner /> --}}
 
       <!-- BEGIN: Navbar-->
       @if ($isNavbar)
