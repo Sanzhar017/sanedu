@@ -16,7 +16,7 @@
         @foreach($students as $student)
           <option value="{{ $student->id }}">{{ $student->name }}</option>
         @endforeach
-      </select>s
+      </select>
     </div>
     <div class="mb-3">
       <label for="order_type_id" class="form-label">Order Type:</label>

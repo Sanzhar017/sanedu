@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class StudentOrder extends Model
 {
   use HasFactory;
+  protected $guarded = [];
 
   protected $fillable = [
     'student_id',

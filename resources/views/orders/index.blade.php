@@ -58,4 +58,5 @@
     @endforeach
     </tbody>
   </table>
+  <p class="mt-3">Найдено {{ $orders->total() }} записей</p>
 @endsection

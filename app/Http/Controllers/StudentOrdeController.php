@@ -16,7 +16,7 @@ class StudentOrdeController extends Controller
      */
     public function index()
     {
-      $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->get();
+      $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
 
       return view('orders.index', ['orders' => $orders]);
 
@@ -41,7 +41,7 @@ class StudentOrdeController extends Controller
     {
       $validatedData = $request->validated();
 
-      StudentOrder::create($validatedData);
+      StudentOrder::create( str_split($validatedData));
 
       return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
 
