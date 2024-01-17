@@ -5,12 +5,15 @@
 @section('content')
   <h4>Create Student Order</h4>
 
-  <form method="POST" action="{{ route('orders.store', ['student' => $student->id]) }}">
+  <form method="POST" action="{{ route('orders.store', ['student' => $student]) }}">
+
+
     @csrf
+
     <div class="mb-3">
       <label for="student_id" class="form-label">Student:</label>
       <select class="form-select" id="student_id" name="student_id" required>
-        @foreach($students as $s)
+        @foreach($student as $s)
           <option value="{{ $s->id }}">{{ $s->name }}</option>
         @endforeach
       </select>

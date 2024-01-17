@@ -22,6 +22,7 @@ class StudentOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
+
           'student_id' => 'required',
           'order_type_id' => 'required',
           'order_number' => 'required',

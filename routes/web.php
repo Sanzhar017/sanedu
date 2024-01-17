@@ -13,7 +13,7 @@ use App\Http\Controllers\authentications\RegisterBasic;
 Route::get('/', [\App\Http\Controllers\StudentController::class, 'index'])->name('pages-home');
 
 
-Route::get('/page-2', [\App\Http\Controllers\StudentOrderController::class, 'index'])->name('pages-page-2');
+Route::get('/page-2', [\App\Http\Controllers\StudentOrdeController::class, 'index'])->name('pages-page-2');
 
 // locale
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
@@ -30,5 +30,8 @@ Route::resource('students',\App\Http\Controllers\StudentController::class);
 
 
   //orders
-Route::resource('/orders', \App\Http\Controllers\StudentOrderController::class);
+Route::resource('/orders', \App\Http\Controllers\StudentOrdeController::class);
+
+
+
 
