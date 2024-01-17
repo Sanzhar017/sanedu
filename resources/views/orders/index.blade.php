@@ -28,6 +28,7 @@
       <th>Order Date</th>
       <th>Title</th>
       <th>Old Status</th>
+      <th>Current status</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -41,6 +42,7 @@
         <td>{{ $order->order_date }}</td>
         <td>{{ $order->title }}</td>
         <td>{{ $order->oldStatus->name }}</td>
+        <td>{{ $order->currentStatus->name}}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Order Actions">
             <a href="{{ route('orders.show', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-info">View</a>
