@@ -37,17 +37,24 @@ class StudentOrdeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StudentOrderRequest $request)
-    {
-      $validatedData = $request->validated();
+  public function store(StudentOrderRequest $request)
+  {
+    $validatedData = $request->validated();
 
-      StudentOrder::create( str_split($validatedData));
+    $studentIds = $validatedData['student_id'];
 
-      return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
-
+    $dataToInsert = [];
+    foreach ($studentIds as $studentId) {
+      $dataToInsert[] = ['student_id' => $studentId] + $validatedData;
     }
 
-    public function show(StudentOrder $order)
+    StudentOrder::insert($dataToInsert);
+
+    return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
+  }
+
+
+  public function show(StudentOrder $order)
     {
       return view('orders.show', ['order' => $order]);
 
