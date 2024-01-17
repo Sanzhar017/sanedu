@@ -27,11 +27,11 @@ class StudentOrdeController extends Controller
      */
     public function create()
     {
-        $student = Student::get();
+        $students = Student::get();
         $orderTypes = OrderType::get();
         $statuses = Status::get();
 
-        return view('orders.create',  ['student' => $student, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
+        return view('orders.create',  ['students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
     }
 
     /**
@@ -47,12 +47,10 @@ class StudentOrdeController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(StudentOrder $order)
     {
-        //
+      return view('orders.show', ['order' => $order]);
+
     }
 
     /**
@@ -74,8 +72,11 @@ class StudentOrdeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+  public function destroy(StudentOrder $order)
+  {
+    $order->delete();
+
+    return redirect()->route('orders.index')->with('success', 'Order deleted successfully');
+  }
+
 }
