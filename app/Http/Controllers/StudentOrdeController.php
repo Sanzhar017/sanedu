@@ -16,7 +16,7 @@ class StudentOrdeController extends Controller
      */
     public function index()
     {
-      $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->get();
+      $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->get();
 
       return view('orders.index', ['orders' => $orders]);
 
