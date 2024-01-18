@@ -11,7 +11,7 @@ class StudentOrderUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class StudentOrderUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+          'student_id' => 'required',
+          'order_type_id' => 'required',
+          'order_number' => 'required',
+          'order_date' => 'required',
+          'title' => 'required',
+          'old_status_id' => 'required',
+          's_status_id' => 'required',
         ];
     }
 }

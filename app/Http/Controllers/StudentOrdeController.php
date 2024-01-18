@@ -67,22 +67,15 @@ class StudentOrdeController extends Controller
   }
 
 
-  public function update(Request $request, StudentOrder $id)
+  public function update(StudentOrderUpdateRequest $request, StudentOrder $order)
   {
-    $request->validate([
-      'student_id' => 'required',
-      'order_type_id' => 'required',
-      'order_number' => 'required',
-      'order_date' => 'required',
-      'title' => 'required',
-      'old_status_id' => 'required',
-      's_status_id' => 'required',
-    ]);
 
-    $order = StudentOrder::findOrFail($id);
-    $order->update($request->all());
+    $validatedData = $request->validated();
 
-    return redirect()->route('orders.index')->with('success', 'Order updated successfully');
+    $order->update($validatedData);
+
+    return redirect()->route('orders.index')->with('success', 'Student updated successfully');
+
   }
 
 
