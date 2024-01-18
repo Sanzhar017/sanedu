@@ -1,15 +1,18 @@
 @extends('layouts.layoutMaster')
-
+@extends('layouts.app')
 @section('title', 'Create Student Order')
 
 @section('content')
   <h4>Create Student Order</h4>
 
+  @if(session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+  @endif
+
   <form method="POST" action="{{ route('orders.store') }}">
-
-
     @csrf
-
     <div class="mb-3">
       <label for="student_id" class="form-label">Student:</label>
       <select class="form-select" id="student_id" name="student_id[]" required multiple>

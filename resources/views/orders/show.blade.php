@@ -3,7 +3,7 @@
 @section('title', 'Show Student Order')
 
 @section('content')
-  <h4>INFOMACIA</h4>
+  <h4>Infomation student</h4>
 
   <div class="mb-3">
     <strong>ID:</strong> {{ $order->id }}
