@@ -12,9 +12,7 @@ use Illuminate\Http\Request;
 
 class StudentOrdeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
       $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
@@ -23,9 +21,7 @@ class StudentOrdeController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         $students = Student::get();
@@ -35,9 +31,7 @@ class StudentOrdeController extends Controller
         return view('orders.create',  ['students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
   public function store(StudentOrderRequest $request)
   {
     $validatedData = $request->validated();
@@ -61,36 +55,37 @@ class StudentOrdeController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
   public function edit($id)
   {
     $order = StudentOrder::findOrFail($id);
-    $students = Student::all();
-    $orderTypes = OrderType::all();
-    $statuses = Status::all();
+    $students = Student::get();
+    $orderTypes = OrderType::get();
+    $statuses = Status::get();
 
-    return view('orders.edit', compact('order', 'students', 'orderTypes', 'statuses'));
+    return view('orders.edit', ['order' => $order, 'students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
   }
 
 
-  /**
-     * Update the specified resource in storage.
-     */
-  public function update(StudentOrderUpdateRequest $request)
+  public function update(Request $request, StudentOrder $id)
   {
-    $validatedData = $request->validated();
+    $request->validate([
+      'student_id' => 'required',
+      'order_type_id' => 'required',
+      'order_number' => 'required',
+      'order_date' => 'required',
+      'title' => 'required',
+      'old_status_id' => 'required',
+      's_status_id' => 'required',
+    ]);
 
-
+    $order = StudentOrder::findOrFail($id);
+    $order->update($request->all());
 
     return redirect()->route('orders.index')->with('success', 'Order updated successfully');
   }
 
 
-  /**
-     * Remove the specified resource from storage.
-     */
   public function destroy(StudentOrder $order)
   {
     $order->delete();
