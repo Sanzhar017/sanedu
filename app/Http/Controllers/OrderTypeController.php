@@ -10,7 +10,9 @@ class OrderTypeController extends Controller
 
     public function index()
     {
-        //
+        $order = OrderType::get();
+
+        return view('ordertype.index', ['order' => $order]);
     }
 
 

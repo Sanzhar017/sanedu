@@ -32,6 +32,9 @@ Route::resource('students',\App\Http\Controllers\StudentController::class);
   //orders
 Route::resource('/orders', \App\Http\Controllers\StudentOrdeController::class);
 
+Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
+
+
 
 
 

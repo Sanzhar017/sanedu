@@ -15,10 +15,9 @@ class StudentOrdeController extends Controller
 
     public function index()
     {
-      $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
+      $orders = StudentOrder::with('student', 'ordertype', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
 
       return view('orders.index', ['orders' => $orders]);
-
     }
 
 
@@ -55,7 +54,6 @@ class StudentOrdeController extends Controller
 
     }
 
-
   public function edit($id)
   {
     $order = StudentOrder::findOrFail($id);
@@ -77,7 +75,6 @@ class StudentOrdeController extends Controller
     return redirect()->route('orders.index')->with('success', 'Student updated successfully');
 
   }
-
 
   public function destroy(StudentOrder $order)
   {

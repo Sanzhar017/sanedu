@@ -29,7 +29,6 @@ class StudentController extends Controller
         return view('students.create');
     }
 
-
     public function store(StudentRequest $request)
     {
       $validatedData = $request->validated();
