@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
 use App\Http\Controllers\pages\HomePage;
@@ -38,11 +39,6 @@ Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
 
 
 
-
-Route::fallback(function () {
-  return view('content.pages.pages-misc-error');
-});
-
-
+Route::fallback([FallbackController::class, 'handle']);
 
 
