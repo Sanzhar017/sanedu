@@ -38,3 +38,11 @@ Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
 
 
 
+
+Route::fallback(function () {
+  return view('content.pages.pages-misc-error');
+});
+
+
+
+
