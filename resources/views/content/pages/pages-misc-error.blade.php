@@ -26,7 +26,7 @@ $configData = Helper::appClasses();
   </div>
 </div>
 <div class="container-fluid misc-bg-wrapper">
-  <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="page-misc-error" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
+  <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ffreefrontend.com%2Fhtml-css-404-page-templates%2F&psig=AOvVaw2ZciVRhI7d35CNMSxAmQLa&ust=1705991857685000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDIhoux8IMDFQAAAAAdAAAAABAI" alt="">
 </div>
 <!-- /Error -->
 @endsection

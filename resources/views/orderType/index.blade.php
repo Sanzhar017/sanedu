@@ -1,5 +1,14 @@
-@foreach ($order as $ord)
-  <tr>
-    <td>{{ $ord->id }}</td>
-  </tr>
-@endforeach
+@extends('layouts.layoutMaster')
+@extends('layouts.app')
+
+@section('title', 'OrderType')
+
+
+
+
+
+
+
+
+
+@endsection

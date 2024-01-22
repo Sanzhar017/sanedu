@@ -48,7 +48,5 @@
       </table>
     </div>
   </div>
-
   <p class="mt-3">Найдено {{ $students->total() }} записей</p>
-
 @endsection
