@@ -48,6 +48,8 @@ class OrderTypeController extends Controller
 
     public function destroy(OrderType $orderType)
     {
-        //
+      $orderType->delete();
+
+      return redirect()->route('or.index')->with('success', 'Order deleted successfully');
     }
 }
