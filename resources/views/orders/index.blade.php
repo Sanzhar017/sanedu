@@ -4,6 +4,7 @@
 @section('title', 'Student Orders')
 
 @section('content')
+  {{ $orders->links() }}
 
   @if(session('success'))
     <div class="alert alert-success">

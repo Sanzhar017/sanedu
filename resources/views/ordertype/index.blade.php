@@ -2,5 +2,4 @@
   <tr>
     <td>{{ $ord->id }}</td>
   </tr>
-
 @endforeach
