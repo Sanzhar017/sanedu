@@ -17,7 +17,7 @@ class StudentOrderController extends Controller
     {
       $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
 
-      return view('orders.index', ['orders' => $orders]);
+      return view('orders.inde', ['orders' => $orders]);
     }
 
 
