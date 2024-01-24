@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
+use App\Models\StudentOrder;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateStudentRequest;
 
@@ -65,6 +66,24 @@ class StudentController extends Controller
 
       return redirect()->route('students.index')->with('success', 'Student deleted successfully');
     }
+
+
+  public function changeOrderAndStatus($studentOrderId)
+  {
+    $studentOrder = StudentOrder::findOrFail($studentOrderId);
+
+    // Получаем студента, связанного с приказом
+    $student = $studentOrder->student;
+
+    // Обновляем статус студента
+    $student->update(['status_id' => $studentOrder->s_status_id]);
+
+    // Дополнительные действия при смене приказа, если необходимо
+    // ...
+
+    return redirect()->route('students.index')->with('success', 'Order changed successfully');
+  }
+
 
 
 }

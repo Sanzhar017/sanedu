@@ -17,7 +17,7 @@ class StudentOrderController extends Controller
     {
       $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
 
-      return view('orders.inde', ['orders' => $orders]);
+      return view('orders.index', ['orders' => $orders]);
     }
 
 
@@ -30,11 +30,10 @@ class StudentOrderController extends Controller
         return view('orders.create',  ['students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
     }
 
-
   public function store(StudentOrderRequest $request)
   {
-    $validatedData = $request->validated();
 
+    $validatedData = $request->validated();
     $studentIds = $validatedData['student_id'];
 
     $dataToInsert = [];
@@ -43,6 +42,12 @@ class StudentOrderController extends Controller
     }
 
     StudentOrder::insert($dataToInsert);
+
+    foreach ($studentIds as $studentId) {
+      $student = Student::findOrFail($studentId);
+      $student->update(['status_id' => $validatedData['s_status_id']]);
+    }
+
 
     return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
   }

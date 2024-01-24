@@ -31,5 +31,4 @@ class Status extends Model
     return $this->hasMany(StudentOrder::class, 'status_id');
   }
 
-
 }
