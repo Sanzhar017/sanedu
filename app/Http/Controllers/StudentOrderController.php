@@ -10,7 +10,7 @@ use App\Models\Student;
 use App\Models\StudentOrder;
 use Illuminate\Http\Request;
 
-class StudentOrdeController extends Controller
+class StudentOrderController extends Controller
 {
 
     public function index()
