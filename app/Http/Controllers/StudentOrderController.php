@@ -32,7 +32,6 @@ class StudentOrderController extends Controller
 
   public function store(StudentOrderRequest $request)
   {
-
     $validatedData = $request->validated();
     $studentIds = $validatedData['student_id'];
 
@@ -47,7 +46,6 @@ class StudentOrderController extends Controller
       $student = Student::findOrFail($studentId);
       $student->update(['status_id' => $validatedData['s_status_id']]);
     }
-
 
     return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
   }

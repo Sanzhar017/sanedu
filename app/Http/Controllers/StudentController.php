@@ -68,21 +68,6 @@ class StudentController extends Controller
     }
 
 
-  public function changeOrderAndStatus($studentOrderId)
-  {
-    $studentOrder = StudentOrder::findOrFail($studentOrderId);
-
-    // Получаем студента, связанного с приказом
-    $student = $studentOrder->student;
-
-    // Обновляем статус студента
-    $student->update(['status_id' => $studentOrder->s_status_id]);
-
-    // Дополнительные действия при смене приказа, если необходимо
-    // ...
-
-    return redirect()->route('students.index')->with('success', 'Order changed successfully');
-  }
 
 
 
