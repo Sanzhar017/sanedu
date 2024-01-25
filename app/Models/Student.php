@@ -28,7 +28,7 @@ class Student extends Model
     return $this->paginate($perPage)->withQueryString();
   }
 
-  public function createStudent(array $data)
+  public function  createStudent(array $data)
   {
     return $this->create($data);
   }

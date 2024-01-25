@@ -42,10 +42,8 @@ class StudentOrderController extends Controller
 
     StudentOrder::insert($dataToInsert);
 
-    foreach ($studentIds as $studentId) {
-      $student = Student::findOrFail($studentId);
-      $student->update(['status_id' => $validatedData['s_status_id']]);
-    }
+    Student::whereIn('id', $studentIds)->update(['status_id' => $validatedData['s_status_id']]);
+
 
     return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
   }
