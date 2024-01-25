@@ -40,12 +40,12 @@ class StudentOrderController extends Controller
       $dataToInsert[] = ['student_id' => $studentId] + $validatedData;
     }
 
-    StudentOrder::insert($dataToInsert);
-
     Student::whereIn('id', $studentIds)->update(['status_id' => $validatedData['s_status_id']]);
 
+    StudentOrder::insert($dataToInsert);
 
     return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
+
   }
 
 
