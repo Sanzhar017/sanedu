@@ -28,7 +28,17 @@
         @foreach($students as $student)
           <tr>
             <td>{{ $student->name }}</td>
-            <td>{{ $student->status->name }}</td>
+            <td>
+              @if($student->status->name === 'обучается')
+                <span class="status-green">{{ $student->status->name }}</span>
+              @elseif($student->status->name === 'отчислен')
+                <span class="status-red">{{ $student->status->name }}</span>
+              @elseif($student->status->name === 'абитурент')
+                <span class="status-gray">{{ $student->status->name }}</span>
+              @else
+                {{ $student->status->name }}
+              @endif
+            </td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>

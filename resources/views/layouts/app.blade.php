@@ -19,6 +19,20 @@
 </head>
 
 <body>
+<style>
+  .status-green {
+    color: #28a745;
+  }
+
+  .status-red {
+    color: #dc3545;
+  }
+
+  .status-gray {
+    color: #6c757d;
+  }
+
+</style>
 
 
 </body>

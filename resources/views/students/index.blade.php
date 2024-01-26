@@ -28,7 +28,7 @@
         @foreach($students as $student)
           <tr>
             <td>{{ $student->name }}</td>
-            <td>{{ $student->status->name }}</td>
+            <td class="btn btn-sm bg-light-success text-success fw-bold  ms-2 fs-8 py-2 px-3 ">{{ $student->status->name }}</td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>

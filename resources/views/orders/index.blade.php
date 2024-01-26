@@ -40,7 +40,17 @@
         <td>{{ $order->order_date }}</td>
         <td>{{ $order->title }}</td>
         <td>{{ $order->oldStatus->name }}</td>
-        <td>{{ $order->currentStatus->name}}</td>
+        <td>
+          @if($order->currentStatus->name === 'обучается')
+            <span class="status-green">{{ $order->currentStatus->name }}</span>
+          @elseif($order->currentStatus->name === 'отчислен')
+            <span class="status-red">{{ $order->currentStatus->name }}</span>
+          @elseif($order->currentStatus->name === 'абитурент')
+            <span class="status-gray">{{ $order->currentStatus->name }}</span>
+          @else
+            {{ $student->status->name }}
+          @endif
+        </td>
         <td>
           <div class="btn-group" role="group" aria-label="Order Actions">
             <a href="{{ route('orders.show', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-info">View</a>
